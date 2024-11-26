@@ -36,7 +36,6 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-*.apk
 *.unitypackage
 *.DS_Store
 Build_BurstDebugInformation_DoNotShip/
