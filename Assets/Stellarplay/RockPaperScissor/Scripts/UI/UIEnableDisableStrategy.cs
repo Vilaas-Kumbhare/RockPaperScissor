@@ -23,8 +23,11 @@ namespace Stellarplay.RockPaperScissor.Scripts.UI
 
         public override void UpdateUI(bool nextScreen, int conditionalNextScreen)
         {
-            if(nextScreen)
-                _currentScreen = _dicSavedScreens[_currentScreen].NextScreenName[conditionalNextScreen];
+            if (nextScreen)
+            {
+                string nextScreenName = _dicSavedScreens[_currentScreen].NextScreenName[conditionalNextScreen];
+                _currentScreen = nextScreenName;
+            }
             
             _dicSavedScreens[_currentScreen].UpdateCurrentScreen();
         }

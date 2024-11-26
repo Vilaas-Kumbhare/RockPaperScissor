@@ -8,6 +8,8 @@ namespace Stellarplay.RockPaperScissor.Scripts.UI
         
         public const int DEFAULT_CONDITION = 0;
         public const int FIRST_CONDITION = 1;
+        public const int SECOND_CONDITION = 2;
+        public const int THIRD_CONDITION = 3;
 
         private void Start()
         {

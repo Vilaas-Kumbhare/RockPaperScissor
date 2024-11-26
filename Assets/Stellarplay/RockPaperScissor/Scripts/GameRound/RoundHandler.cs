@@ -18,22 +18,20 @@ namespace Stellarplay.RockPaperScissor.Scripts.GameRound
             _round.StartNewRound();
         }
 
-        private void PlayerInteracted(int ID)
+        private void PlayerInteracted(int id)
         {
-            //player hand got
-            // ai hand got 
-            
-            
+            _round.PlayerInteracted(id);
+            ShowResult();
         }
 
         public void RoundTimeOut()
         {
-            
+            _round.TimeOut();
         }
 
-        public void ShowResult()
+        private void ShowResult()
         {
-            
+            _round.ShowResult();
         }
     }
 }

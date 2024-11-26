@@ -7,7 +7,7 @@ namespace Stellarplay.RockPaperScissor.Scripts.Score
     {
         public override int CalculateScore(int baseScore, int multiplier)
         {
-            return baseScore * multiplier;
+            return baseScore + multiplier;
         }
     }
 }

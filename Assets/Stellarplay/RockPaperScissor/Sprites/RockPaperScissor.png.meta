@@ -144,7 +144,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paper
+      name: Scissor
       rect:
         serializedVersion: 2
         x: 351
@@ -165,7 +165,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scissor
+      name: Paper
       rect:
         serializedVersion: 2
         x: 684
@@ -239,9 +239,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Lizard: -725763024
-      Paper: 1637976805
+      Paper: -1642458650
       Rock: -38396841
-      Scissor: -1642458650
+      Scissor: 1637976805
       Spock: -1842871547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

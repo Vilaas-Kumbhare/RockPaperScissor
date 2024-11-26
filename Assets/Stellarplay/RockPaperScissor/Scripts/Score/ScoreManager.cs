@@ -23,7 +23,8 @@ namespace Stellarplay.RockPaperScissor.Scripts.Score
         {
             if (_scoreStrategy != null)
             {
-                UpdateScoreUI(_scoreStrategy.CalculateScore(_currentScore, _currentMultiplier));
+                _currentScore = _scoreStrategy.CalculateScore(_currentScore, _currentMultiplier);
+                UpdateScoreUI(_currentScore);
                 _currentMultiplier++;
             }
         }
@@ -34,7 +35,7 @@ namespace Stellarplay.RockPaperScissor.Scripts.Score
                 _scoreUIStrategy.UpdateScore(score);
         }
 
-        private void InitScore()
+        public void InitScore()
         {
             _currentScore = 0;
             _currentMultiplier = 0;
