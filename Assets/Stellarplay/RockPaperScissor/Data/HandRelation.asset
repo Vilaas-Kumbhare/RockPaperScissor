@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ed81f394f762b4dbfe862e7820820a, type: 3}
+  m_Name: HandRelation
+  m_EditorClassIdentifier: 
+  HandRelationsList:
+  - MainHand: {fileID: 11400000, guid: 9db07647933f40f40834a068c392877f, type: 2}
+    CanDefeat:
+    - {fileID: 11400000, guid: 51f1550c7c0e2384bba3481cb3664ec3, type: 2}
+    - {fileID: 11400000, guid: cf5d5c9bb82bf27478247dbf7c0600e4, type: 2}
+  - MainHand: {fileID: 11400000, guid: cf5d5c9bb82bf27478247dbf7c0600e4, type: 2}
+    CanDefeat:
+    - {fileID: 11400000, guid: ba2e2533fcd557c449ab408ed001350b, type: 2}
+    - {fileID: 11400000, guid: 51f1550c7c0e2384bba3481cb3664ec3, type: 2}
+  - MainHand: {fileID: 11400000, guid: ba2e2533fcd557c449ab408ed001350b, type: 2}
+    CanDefeat:
+    - {fileID: 11400000, guid: 9db07647933f40f40834a068c392877f, type: 2}
+    - {fileID: 11400000, guid: 5efcf12fc9daf914fa40fbbf2e185c49, type: 2}
+  - MainHand: {fileID: 11400000, guid: 5efcf12fc9daf914fa40fbbf2e185c49, type: 2}
+    CanDefeat:
+    - {fileID: 11400000, guid: 9db07647933f40f40834a068c392877f, type: 2}
+    - {fileID: 11400000, guid: cf5d5c9bb82bf27478247dbf7c0600e4, type: 2}
+  - MainHand: {fileID: 11400000, guid: 51f1550c7c0e2384bba3481cb3664ec3, type: 2}
+    CanDefeat:
+    - {fileID: 11400000, guid: 5efcf12fc9daf914fa40fbbf2e185c49, type: 2}
+    - {fileID: 11400000, guid: ba2e2533fcd557c449ab408ed001350b, type: 2}
