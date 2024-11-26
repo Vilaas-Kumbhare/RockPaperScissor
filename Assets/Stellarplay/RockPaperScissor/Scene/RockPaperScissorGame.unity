@@ -5346,7 +5346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c3653a2b49b0c640a3dc201bcffbed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentScreen: 
+  _currentScreen: MainMenu
   _uiScreens:
   - _screenName: MainMenu
     _nextScreenName:

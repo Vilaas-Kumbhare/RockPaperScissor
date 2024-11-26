@@ -14,6 +14,7 @@ namespace Stellarplay.RockPaperScissor.Scripts.UI
 
         public override void InitUI()
         {
+            _dicSavedScreens = new Dictionary<string, Screen>();
             foreach (Screen screen in _uiScreens)
             {
                 _dicSavedScreens.Add(screen.ScreenName,screen);
