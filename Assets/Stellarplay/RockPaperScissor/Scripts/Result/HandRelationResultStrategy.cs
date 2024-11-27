@@ -15,40 +15,32 @@ namespace  Stellarplay.RockPaperScissor.Scripts.Result
         [SerializeField] private Image _winningHand;
         public override RoundResult Evaluate()
         {
+            if (_handRelationData == null || _playerController == null || _aiController == null)
+            {
+                Debug.LogError("Dependencies are not assigned.");
+                return RoundResult.Draw;
+            }
+
             HandRelations playerHand = _handRelationData.HandRelationsList[_playerController.PlayerPlayId];
             HandRelations aiHand = _handRelationData.HandRelationsList[_aiController.AiPlayId];
 
-            RoundResult roundResult = RoundResult.Draw;
-            _winningHand.sprite = playerHand.MainHand.HandSprite;
-
             if (playerHand == aiHand)
+                return RoundResult.Draw;
+
+            if (playerHand.CanDefeat.Contains(aiHand.MainHand))
             {
-                roundResult = RoundResult.Draw;
-                _winningHand.sprite = playerHand.MainHand.HandSprite;
+                SetWinningHand(playerHand.MainHand.HandSprite);
+                return RoundResult.Win;
             }
-            else
-            {
-                foreach (Hand hand in playerHand.CanDefeat)
-                {
-                    if (hand == aiHand.MainHand)
-                    {
-                        roundResult = RoundResult.Win;
-                        _winningHand.sprite = playerHand.MainHand.HandSprite;
-                        break;
-                    }
-                }
-                
-                foreach (Hand hand in aiHand.CanDefeat)
-                {
-                    if (hand == playerHand.MainHand)
-                    {
-                        roundResult = RoundResult.Loss;
-                        _winningHand.sprite = aiHand.MainHand.HandSprite;
-                        break;
-                    }
-                }
-            }
-            return roundResult;
+
+            SetWinningHand(aiHand.MainHand.HandSprite);
+            return RoundResult.Loss;
+        }
+
+        private void SetWinningHand(Sprite winningSprite)
+        {
+            if (_winningHand != null)
+                _winningHand.sprite = winningSprite;
         }
     }
 }

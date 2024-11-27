@@ -15,7 +15,7 @@ namespace Stellarplay.RockPaperScissor.Scripts.Score
         private void Start()
         {
             _highScore = PlayerPrefs.GetInt("highScore", 0);
-            _savedHighScore.text = _highScore.ToString();
+            UpdateHighScoreUI(_highScore);
         }
 
 
@@ -27,12 +27,17 @@ namespace Stellarplay.RockPaperScissor.Scripts.Score
             }
 
             _highScore = Mathf.Max(score, _highScore);
-            SetHighScore(_highScore);
+            SaveHighScore(_highScore);
+            UpdateHighScoreUI(_highScore);
         }
 
-        private void SetHighScore(int highScore)
+        private void UpdateHighScoreUI(int highScore)
         {
             _savedHighScore.text = highScore.ToString();
+        }
+
+        private void SaveHighScore(int highScore)
+        {
             PlayerPrefs.SetInt("highScore", highScore);
         }
     }

@@ -13,9 +13,17 @@ namespace  Stellarplay.RockPaperScissor.Scripts.AI
 
         public override void Play(UnityAction<int> callback)
         {
+            if (_handRelationData == null || _handRelationData.HandRelationsList.Count == 0)
+            {
+                Debug.LogError("HandRelationData is not properly configured.");
+                callback?.Invoke(-1);
+                return;
+            }
+            
             int id = Random.Range(0, _handRelationData.HandRelationsList.Count);
 
-            _aiHandImage.sprite = _handRelationData.HandRelationsList[id].MainHand.HandSprite;
+            if (_aiHandImage != null)
+                _aiHandImage.sprite = _handRelationData.HandRelationsList[id].MainHand.HandSprite;
             
             callback?.Invoke(id);
         }

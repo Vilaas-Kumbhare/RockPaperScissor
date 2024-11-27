@@ -11,6 +11,11 @@ namespace  Stellarplay.RockPaperScissor.Scripts.AI
 
         public int AiPlayId => _aiPlayId;
 
+        private void Awake()
+        {
+            if (_aiPlay == null)
+                Debug.LogError("AIPlay strategy is not assigned.");
+        }
         public void Play()
         {
             _aiPlay.Play(SetAIPlayId);

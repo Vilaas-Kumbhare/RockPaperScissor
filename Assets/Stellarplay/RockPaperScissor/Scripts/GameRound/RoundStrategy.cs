@@ -17,7 +17,22 @@ namespace Stellarplay.RockPaperScissor.Scripts.GameRound
         [SerializeField] private AIController _aiController;
         [SerializeField] private RuleEngine _ruleEngine;
         [SerializeField] private ScoreManager _scoreManager;
+        
         private RoundResult _result;
+        private Coroutine _currentCoroutine;
+        private int _timeOutCondition = 0;
+        
+        private const float ScreenPersistTimeDelay = 1.5f;
+        
+        private void Awake()
+        {
+            if (_uiManager == null) Debug.LogError("UIManager is not assigned in RoundStrategy.");
+            if (_timerManager == null) Debug.LogError("TimerManager is not assigned in RoundStrategy.");
+            if (_playerController == null) Debug.LogError("PlayerController is not assigned in RoundStrategy.");
+            if (_aiController == null) Debug.LogError("AIController is not assigned in RoundStrategy.");
+            if (_ruleEngine == null) Debug.LogError("RuleEngine is not assigned in RoundStrategy.");
+            if (_scoreManager == null) Debug.LogError("ScoreManager is not assigned in RoundStrategy.");
+        }
         public override void StartNewRound()
         {
             _scoreManager.InitScore();
@@ -45,7 +60,7 @@ namespace Stellarplay.RockPaperScissor.Scripts.GameRound
         IEnumerator StartRound()
         {
             _uiManager.UpdateMenuUI(true);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(ScreenPersistTimeDelay);
             
             _uiManager.UpdateMenuUI(true);
             _timerManager.StartTimer();
@@ -53,26 +68,34 @@ namespace Stellarplay.RockPaperScissor.Scripts.GameRound
 
         IEnumerator TimeOutSequence()
         {
-            _uiManager.UpdateMenuUI(true,UIManager.FIRST_CONDITION);
-            yield return new WaitForSeconds(2f);
+            _uiManager.UpdateMenuUI(true,_timeOutCondition);
+            yield return new WaitForSeconds(ScreenPersistTimeDelay);
             _uiManager.UpdateMenuUI(true);
         }
 
         IEnumerator ShowSelectedHandsAndResult()
         {
             _uiManager.UpdateMenuUI(true);
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(ScreenPersistTimeDelay);
             _uiManager.UpdateMenuUI(true,(int)_result);
-            
-            if(_result == RoundResult.Win)
-                _scoreManager.UpdateScore();
-            yield return new WaitForSeconds(1.5f);
 
-            if (_result == RoundResult.Win || _result == RoundResult.Draw)
-                StartCoroutine(StartRound());
-            else
+            switch (_result)
             {
-                _uiManager.UpdateMenuUI(true);
+                case RoundResult.Win:
+                    _scoreManager.UpdateScore();
+                    yield return new WaitForSeconds(ScreenPersistTimeDelay);
+                    StartCoroutine(StartRound());
+                    break;
+
+                case RoundResult.Draw:
+                    yield return new WaitForSeconds(ScreenPersistTimeDelay);
+                    StartCoroutine(StartRound());
+                    break;
+
+                case RoundResult.Loss:
+                    yield return new WaitForSeconds(ScreenPersistTimeDelay);
+                    _uiManager.UpdateMenuUI(true);
+                    break;
             }
         }
     }
