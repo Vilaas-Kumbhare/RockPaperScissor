@@ -25,7 +25,10 @@ namespace  Stellarplay.RockPaperScissor.Scripts.Result
             HandRelations aiHand = _handRelationData.HandRelationsList[_aiController.AiPlayId];
 
             if (playerHand == aiHand)
+            {
+                SetWinningHand(playerHand.MainHand.HandSprite);
                 return RoundResult.Draw;
+            }
 
             if (playerHand.CanDefeat.Contains(aiHand.MainHand))
             {
